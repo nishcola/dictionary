@@ -75,7 +75,7 @@ function Definition() {
 
     // Handle no data found
     if (!data || data.length === 0 || 'title' in data[0]) {
-        return <div className="p-5 text-center">No definitions found for "{query}".</div>;
+        return <div className="p-5 text-center">No definitions found for {query}.</div>;
     }
 
     // Now it's safe to destructure the data
