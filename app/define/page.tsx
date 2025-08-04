@@ -1,9 +1,35 @@
 "use client"
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal } from "react"; // Import Suspense
+import { useState, useEffect } from "react"; // Import Suspense
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+
+interface Definition {
+    definition: string;
+    example?: string;
+    synonyms: string[];
+    antonyms: string[];
+}
+
+interface Meaning {
+    partOfSpeech: string;
+    definitions: Definition[];
+}
+
+interface WordData {
+    word: string;
+    phonetic?: string;
+    phonetics: { text: string; audio?: string }[];
+    origin?: string;
+    meanings: Meaning[];
+}
+
+interface ErrorResponse {
+    title: string;
+    message: string;
+    resolution: string;
+}
 
 export default function DefinitionPage() {
     const searchParams = useSearchParams();
@@ -20,7 +46,7 @@ export default function DefinitionPage() {
             })
     }, [url]);
 
-    let meanings = [];
+    let meanings: Meaning[] = [];
     let word = query; // Default to query if data[0] is not available yet
     let origin = '';
     let phoneticText = '';
@@ -43,7 +69,7 @@ export default function DefinitionPage() {
 
             {meanings && meanings.length > 0 ? (
                 <div>
-                    {meanings.map((meaning: { partOfSpeech: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; definitions: any[]; }, meaningIndex: Key | null | undefined) => (
+                    {meanings.map((meaning, meaningIndex) => (
                         <div key={meaningIndex} className="mt-6 p-4 border rounded-md bg-white">
                             <h2 className="text-2xl font-bold text-blue-600 capitalize">{meaning.partOfSpeech}</h2>
 
