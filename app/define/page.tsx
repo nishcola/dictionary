@@ -1,6 +1,6 @@
 "use client"
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react"; // Import Suspense
+import { useState, useEffect, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal } from "react"; // Import Suspense
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -43,7 +43,7 @@ export default function DefinitionPage() {
 
             {meanings && meanings.length > 0 ? (
                 <div>
-                    {meanings.map((meaning, meaningIndex) => (
+                    {meanings.map((meaning: { partOfSpeech: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; definitions: any[]; }, meaningIndex: Key | null | undefined) => (
                         <div key={meaningIndex} className="mt-6 p-4 border rounded-md bg-white">
                             <h2 className="text-2xl font-bold text-blue-600 capitalize">{meaning.partOfSpeech}</h2>
 
