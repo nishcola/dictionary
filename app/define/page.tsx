@@ -57,7 +57,7 @@ export default function DefinitionPage() {
                                             {/* Example */}
                                             {def.example && (
                                                 <p className="text-sm text-gray-600 italic mt-1">
-                                                    Example: "{def.example}"
+                                                    Example: {def.example}
                                                 </p>
                                             )}
 
