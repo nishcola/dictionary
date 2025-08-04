@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Home() {
   const router = useRouter();
@@ -29,8 +30,9 @@ export default function Home() {
           </form>
         </div>
       </div>
-      <footer className="bg-gray-200 w-full p-5 text-center">
-        <p>&#9432; Dictionary data and API provided by dictionaryapi</p>
+      <footer className="bg-gray-200 w-full p-5 text-center flex flex-row gap-3 justify-center">
+        <span>&#9432;</span> 
+        <span>Dictionary data and API provided by <Link href="https://dictionaryapi.dev" target="_blank" className="text-blue-700 underline">dictionaryapi</Link></span>
       </footer>
     </main>
   );
