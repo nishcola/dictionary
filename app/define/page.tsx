@@ -3,6 +3,7 @@ import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react"; // Import Suspense
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 export default function DefinitionPage() {
     const searchParams = useSearchParams();
@@ -33,11 +34,11 @@ export default function DefinitionPage() {
             <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-balance">Definitions for: {query}</h1>
             
             {phoneticText && (
-                <p className="text-xl text-gray-600 mb-4">{phoneticText}</p>
+                <Badge className="bg-blue-500 text-white dark:bg-blue-600 mb-2">{phoneticText}</Badge>
             )}
 
             {origin && (
-                <p className="text-md text-gray-700 italic mb-6">Origin: {origin}</p>
+                <p className="text-md text-gray-700 italic mb-2">Origin: {origin}</p>
             )}
 
             {meanings && meanings.length > 0 ? (
